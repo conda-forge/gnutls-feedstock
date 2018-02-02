@@ -1,6 +1,6 @@
 {% set name = "gnutls" %}
-{% set version = "3.5.15" %}
-{% set sha256 = "046081108b8b1fe455a13a4c5a4eaa0368e185b678f1670fe09a11a2d7ecfad5" %}
+{% set version = "3.5.17" %}
+{% set sha256 = "86b142afef587c118d63f72ccf307f3321dbc40357aae528202b65d913d20919" %}
 
 
 package:
@@ -20,17 +20,17 @@ source:
     #this patches fixes the makefile in tests/slow/. This makefile
     #used to trigger the test on the openssl compatibility module
     #even though it was not built. I added a test on ENABLE_OPENSSL.
-    
+
 build:
   number: 0
-  skip: True  # [win]  
+  skip: True  # [win]
 
 requirements:
   build:
     - gmp 6.1.*
-    - nettle 3.3.*
-    - zlib 1.2.8 
-    - toolchain3 
+    - nettle 3.3|3.3.*
+    - zlib 1.2.11
+    - toolchain3
     - libidn11
     - pkg-config  # [osx]
     - autoconf
@@ -44,14 +44,14 @@ requirements:
     - zlib 1.2.8
     - libidn11
     - gettext  # [osx]
-      
+
 test:
   commands:
     - conda inspect linkages -p $PREFIX gnutls
     - test -f ${PREFIX}/lib/libgnutls.so  # [linux]
-    - test -f ${PREFIX}/lib/libgnutlsxx.so  # [linux]	
+    - test -f ${PREFIX}/lib/libgnutlsxx.so  # [linux]
     - test -f ${PREFIX}/lib/libgnutls.dylib  # [osx]
-    - test -f ${PREFIX}/lib/libgnutlsxx.dylib  # [osx]	
+    - test -f ${PREFIX}/lib/libgnutlsxx.dylib  # [osx]
 
 about:
   home: http://www.gnutls.org/index.html
