@@ -40,8 +40,8 @@ requirements:
 
   run:
     - gmp 6.1.*
-    - nettle 3.3.*
-    - zlib 1.2.8
+    - nettle 3.3|3.3.*
+    - zlib 1.2.11
     - libidn11
     - gettext  # [osx]
 
