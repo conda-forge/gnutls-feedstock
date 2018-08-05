@@ -35,12 +35,13 @@ requirements:
     - libtool
   host:
     - zlib
-    - gettext     # [osx]
+    - gettext >=0.19.8.1     # [osx]
     - gmp
     - nettle
   run:
-    # ideally would add run_exports to nettle and remove this
+    # ideally would add run_exports to nettle and gettext and remove these
     - nettle
+    - gettext >=0.19.8.1     # [osx]
 
 test:
   commands:
