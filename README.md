@@ -14,14 +14,16 @@ Summary: GnuTLS is a secure communications library implementing the SSL, TLS and
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/gnutls-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/gnutls-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/gnutls-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/gnutls-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/gnutls-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/gnutls-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/gnutls-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/gnutls-feedstock)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/gnutls/badges/version.svg)](https://anaconda.org/conda-forge/gnutls)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/gnutls/badges/downloads.svg)](https://anaconda.org/conda-forge/gnutls)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gnutls-green.svg)](https://anaconda.org/conda-forge/gnutls) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gnutls.svg)](https://anaconda.org/conda-forge/gnutls) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gnutls.svg)](https://anaconda.org/conda-forge/gnutls) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gnutls.svg)](https://anaconda.org/conda-forge/gnutls) |
 
 Installing gnutls
 =================

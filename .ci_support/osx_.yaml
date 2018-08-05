@@ -1,0 +1,21 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
+c_compiler:
+- toolchain_c
+gmp:
+- '6'
+macos_machine:
+- x86_64-apple-darwin13.4.0
+macos_min_version:
+- '10.9'
+nettle:
+- '3.3'
+pin_run_as_build:
+  gmp:
+    max_pin: x
+  nettle:
+    max_pin: x.x
+  zlib:
+    max_pin: x.x
+zlib:
+- '1.2'

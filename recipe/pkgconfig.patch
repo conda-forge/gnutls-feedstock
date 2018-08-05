@@ -1,6 +1,8 @@
---- tests/pkgconfig.sh	2017-09-03 17:23:50.943352157 +0200
-+++ tests/pkgconfig.sh	2017-09-03 17:23:31.247394776 +0200
-@@ -31,7 +31,7 @@
+diff --git a/tests/pkgconfig.sh b/tests/pkgconfig.sh
+index 75bb59d10..c13344d38 100755
+--- a/tests/pkgconfig.sh
++++ b/tests/pkgconfig.sh
+@@ -31,7 +31,7 @@ echo "$CFLAGS"|grep sanitize && exit 77
  
  ${PKGCONFIG} --version >/dev/null || exit 77
  
@@ -9,7 +11,7 @@
  export PKG_CONFIG_PATH
  
  set -e
-@@ -45,16 +45,16 @@
+@@ -45,16 +45,16 @@ gnutls_global_init();
  }
  __EOF__
  
