@@ -16,5 +16,5 @@ fi
             --with-included-unistring \
             --without-p11-kit
 make -j${CPU_COUNT}
+make -j${CPU_COUNT} check
 make install
-make check
