@@ -3,18 +3,18 @@ index 75bb59d10..c13344d38 100755
 --- a/tests/pkgconfig.sh
 +++ b/tests/pkgconfig.sh
 @@ -31,7 +31,7 @@ echo "$CFLAGS"|grep sanitize && exit 77
- 
+
  ${PKGCONFIG} --version >/dev/null || exit 77
- 
+
 -PKG_CONFIG_PATH=${top_builddir}/lib
 +PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig/
  export PKG_CONFIG_PATH
- 
+
  set -e
 @@ -45,16 +45,16 @@ gnutls_global_init();
  }
  __EOF__
- 
+
 -COMMON="-I${PKG_CONFIG_PATH}/includes -L${PKG_CONFIG_PATH}/.libs -I${srcdir}/../lib/includes"
 +COMMON="-L${PREFIX}/lib/ -I${PREFIX}/include/"
  echo "Trying dynamic linking with:"
@@ -22,12 +22,12 @@ index 75bb59d10..c13344d38 100755
  echo "  * common: ${COMMON}"
  echo "  * lib: ${CFLAGS}"
 -cc ${TMPFILE} -o ${TMPFILE_O} $(${PKGCONFIG} --libs gnutls) $(${PKGCONFIG} --cflags gnutls) ${COMMON}
-+gcc ${TMPFILE} -o ${TMPFILE_O} $(${PKGCONFIG} --libs gnutls) $(${PKGCONFIG} --cflags gnutls) ${COMMON} -std=gnu99
- 
++$CC ${TMPFILE} -o ${TMPFILE_O} $(${PKGCONFIG} --libs gnutls) $(${PKGCONFIG} --cflags gnutls) ${COMMON} -std=gnu99
+
  echo ""
  echo "Trying static linking with $(${PKGCONFIG} --libs --static gnutls)"
 -cc ${TMPFILE} -o ${TMPFILE_O} $(${PKGCONFIG} --static --libs gnutls) $(${PKGCONFIG} --cflags gnutls) ${COMMON}
-+gcc ${TMPFILE} -o ${TMPFILE_O} $(${PKGCONFIG} --static --libs gnutls) $(${PKGCONFIG} --cflags gnutls) ${COMMON} -std=gnu99
- 
++$CC ${TMPFILE} -o ${TMPFILE_O} $(${PKGCONFIG} --static --libs gnutls) $(${PKGCONFIG} --cflags gnutls) ${COMMON} -std=gnu99
+
  rm -f ${TMPFILE} ${TMPFILE_O}
- 
+
