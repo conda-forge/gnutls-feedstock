@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export LDFLAGS="${LDFLAGS/-Wl,--as-needed/}"
+
 if [ "$(uname)" == "Linux" ]
 then
    export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${PREFIX}/lib"
