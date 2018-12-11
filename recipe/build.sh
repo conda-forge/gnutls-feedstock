@@ -11,7 +11,7 @@ fi
 
 export CPPFLAGS="${CPPFLAGS//-DNDEBUG/}"
 
-autoreconf -vfi
+autoreconf -vfi tests/
 
 ./configure --prefix="${PREFIX}" \
             --without-idn \
