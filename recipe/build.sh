@@ -11,8 +11,6 @@ fi
 
 export CPPFLAGS="${CPPFLAGS//-DNDEBUG/}"
 
-autoreconf -vfi tests/
-
 ./configure --prefix="${PREFIX}" \
             --without-idn \
             --without-libidn2 \
