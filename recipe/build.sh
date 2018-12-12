@@ -19,4 +19,4 @@ export CPPFLAGS="${CPPFLAGS//-DNDEBUG/}"
             --without-p11-kit || { cat config.log; exit 1; }
 make -j${CPU_COUNT}
 make install
-make -j${CPU_COUNT} check V=1 || { cat tests/test-suite.log; exit 1; }
+make -j${CPU_COUNT} check V=1 || { cat tests/test-suite.log; cat tests/slow/test-suite.log; exit 1; }
