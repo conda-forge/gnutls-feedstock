@@ -10,13 +10,9 @@ docker_image:
 - condaforge/linux-anvil
 gmp:
 - '6'
-nettle:
-- '3.4'
 pin_run_as_build:
   gmp:
     max_pin: x
-  nettle:
-    max_pin: x.x
   zlib:
     max_pin: x.x
 zip_keys:
