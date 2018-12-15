@@ -1,0 +1,49 @@
+From 72d25d427078d3de5c25c3b5406b0313ffd813ab Mon Sep 17 00:00:00 2001
+From: Tom Vrancken <email@tomvrancken.nl>
+Date: Fri, 25 Aug 2017 19:54:58 +0200
+Subject: [PATCH] Fixed segmentation faults caused by accessing NULL pointers
+ during mutex operations. This bug was triggered while setting priorities.
+
+Signed-off-by: Tom Vrancken <email@tomvrancken.nl>
+---
+ lib/atomic.h | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/lib/atomic.h b/lib/atomic.h
+index 3e943a81b8..f07a71a110 100644
+--- a/lib/atomic.h
++++ b/lib/atomic.h
+@@ -47,24 +47,24 @@ typedef struct gnutls_atomic_uint_st *gnutls_atomic_uint_t;
+ inline static unsigned gnutls_atomic_val(gnutls_atomic_uint_t x)
+ {
+ 	unsigned int t;
+-	gnutls_mutex_lock(x->lock);
++	gnutls_mutex_lock(&x->lock);
+ 	t = x->value;
+-	gnutls_mutex_unlock(x->lock);
++	gnutls_mutex_unlock(&x->lock);
+ 	return t;
+ }
+ 
+ inline static void gnutls_atomic_increment(gnutls_atomic_uint_t x)
+ {
+-	gnutls_mutex_lock(x->lock);
++	gnutls_mutex_lock(&x->lock);
+ 	x->value++;
+-	gnutls_mutex_unlock(x->lock);
++	gnutls_mutex_unlock(&x->lock);
+ }
+ 
+ inline static void gnutls_atomic_decrement(gnutls_atomic_uint_t x)
+ {
+-	gnutls_mutex_lock(x->lock);
++	gnutls_mutex_lock(&x->lock);
+ 	x->value--;
+-	gnutls_mutex_unlock(x->lock);
++	gnutls_mutex_unlock(&x->lock);
+ }
+ 
+ inline static void gnutls_atomic_init(gnutls_atomic_uint_t x)
+-- 
+2.18.1
+
