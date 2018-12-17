@@ -19,9 +19,6 @@ source:
     #this patches fixes the makefile in tests/slow/. This makefile
     #used to trigger the test on the openssl compatibility module
     #even though it was not built. I added a test on ENABLE_OPENSSL.
-    - atomic.patch
-    # the above attempts to patch segfaults.
-    # see https://github.com/conda-forge/gnutls-feedstock/pull/7#issuecomment-447539962
 
 build:
   number: 1001
