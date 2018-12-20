@@ -41,7 +41,6 @@ requirements:
     - libtool
     - make
   host:
-    - zlib
     - gettext >=0.19.8.1     # [osx]
     - gmp
     - nettle >=3.4.1
