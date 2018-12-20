@@ -23,6 +23,6 @@ export CPPFLAGS="${CPPFLAGS//-DNDEBUG/}"
             --with-included-libtasn1 \
             --with-included-unistring \
             --without-p11-kit || { cat config.log; exit 1; }
-make -j${CPU_COUNT}
+make VERBOSE=1 -j${CPU_COUNT}
 make install
 make -j${CPU_COUNT} check V=1 || { echo CONDA-FORGE TEST OUTPUT; cat test-output.log; cat tests/test-suite.log; cat tests/slow/test-suite.log; exit 1; }
