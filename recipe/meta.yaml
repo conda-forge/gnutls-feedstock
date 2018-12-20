@@ -28,6 +28,9 @@ build:
   run_exports:
     # https://abi-laboratory.pro/?view=timeline&l=gnutls
     - {{ pin_subpackage('gnutls', max_pin='x.x') }}
+  ignore_run_exports:
+    # Only used in tests: tests/suite/prime-check.c
+    - gmp
 
 requirements:
   build:
