@@ -1,7 +1,6 @@
 #!/bin/bash
 
-if [ "$(uname)" == "Linux" ]
-then
+if [[ ${target_platform} =~ .*linux.* ]]; then
    export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${PREFIX}/lib"
 fi
 
@@ -16,7 +15,6 @@ export CPPFLAGS="${CPPFLAGS//-DNDEBUG/}"
 
 ./configure --prefix="${PREFIX}" \
             --without-idn \
-            --without-libidn2 \
             --cache-file=test-output.log \
             --disable-full-test-suite \
             --disable-maintainer-mode \
