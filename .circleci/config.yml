@@ -1,11 +1,11 @@
 version: 2
 
 jobs:
-  build_linux_c_compilergcc:
+  build_linux_c_compilergcccxx_compilergxxtarget_platformlinux-64:
     working_directory: ~/test
     machine: true
     environment:
-      - CONFIG: "linux_c_compilergcc"
+      - CONFIG: "linux_c_compilergcccxx_compilergxxtarget_platformlinux-64"
     steps:
       - checkout
       - run:
@@ -18,12 +18,11 @@ jobs:
       - run:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: ./.circleci/run_docker_build.sh
-          no_output_timeout: 30m
-  build_linux_c_compilertoolchain_c:
+  build_linux_c_compilertoolchain_ccxx_compilertoolchain_cxxtarget_platformlinux-64:
     working_directory: ~/test
     machine: true
     environment:
-      - CONFIG: "linux_c_compilertoolchain_c"
+      - CONFIG: "linux_c_compilertoolchain_ccxx_compilertoolchain_cxxtarget_platformlinux-64"
     steps:
       - checkout
       - run:
@@ -36,11 +35,10 @@ jobs:
       - run:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: ./.circleci/run_docker_build.sh
-          no_output_timeout: 30m
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build_linux_c_compilergcc
-      - build_linux_c_compilertoolchain_c
+      - build_linux_c_compilergcccxx_compilergxxtarget_platformlinux-64
+      - build_linux_c_compilertoolchain_ccxx_compilertoolchain_cxxtarget_platformlinux-64
