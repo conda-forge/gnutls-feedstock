@@ -36,15 +36,15 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - pkg-config
     - automake
     - libtool
     - make
+    - pkg-config
   host:
     - gettext >=0.19.8.1     # [osx]
     - gmp
     - nettle >=3.4.1
-    - datefudge              # [linux]
+    # - datefudge              # [linux]
   run:
     # ideally would add run_exports to nettle and gettext and remove these
     - nettle >=3.4.1
@@ -52,12 +52,8 @@ requirements:
 
 test:
   commands:
-    - conda inspect linkages -p $PREFIX {{ name }}  # [not win]
-    - conda inspect objects -p $PREFIX {{ name }}   # [osx]
-    - test -f ${PREFIX}/lib/libgnutls.so       # [linux]
-    - test -f ${PREFIX}/lib/libgnutlsxx.so     # [linux]
-    - test -f ${PREFIX}/lib/libgnutls.dylib    # [osx]
-    - test -f ${PREFIX}/lib/libgnutlsxx.dylib  # [osx]
+    - test -f ${PREFIX}/lib/libgnutls${SHLIB_EXT}    # [unix]
+    - test -f ${PREFIX}/lib/libgnutlsxx${SHLIB_EXT}  # [unix]
 
 about:
   home: http://www.gnutls.org/index.html
