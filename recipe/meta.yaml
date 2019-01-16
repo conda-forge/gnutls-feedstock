@@ -57,8 +57,8 @@ test:
 
 about:
   home: http://www.gnutls.org/index.html
-  license: GPL 2.1
-  license_family: GPL
+  license: LGPLv2.1
+  license_family: LGPL
   license_file: LICENSE
   summary: 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols'
   doc_url: http://www.gnutls.org/documentation.html
