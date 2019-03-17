@@ -42,6 +42,6 @@ make -j${CPU_COUNT} check V=1 || {
    cat test-output.log; 
    cat tests/test-suite.log; 
    cat tests/slow/test-suite.log; 
-   exit ${fail_test_exit_code}; 
+   exit "${fail_test_exit_code}"; 
 }
 
