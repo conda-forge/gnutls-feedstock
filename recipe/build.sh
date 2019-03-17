@@ -41,7 +41,9 @@ make -j${CPU_COUNT} check V=1 || {
    echo CONDA-FORGE TEST OUTPUT; 
    cat test-output.log; 
    cat tests/test-suite.log; 
-   cat tests/slow/test-suite.log; 
-   exit "${fail_test_exit_code}"; 
-}
+   cat tests/slow/test-suite.log;
+   if [[ "${fail_test_exit_code}" == "1" ]]; then
+      exit fail_test_exit_code;
+   fi
+} || true
 
