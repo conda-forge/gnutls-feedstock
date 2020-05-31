@@ -1,6 +1,6 @@
 {% set name = "gnutls" %}
-{% set version = "3.6.5" %}
-{% set sha256 = "073eced3acef49a3883e69ffd5f0f0b5f46e2760ad86eddc6c0866df4e7abb35" %}
+{% set version = "3.6.13" %}
+{% set sha256 = "32041df447d9f4644570cf573c9f60358e865637d69b7e59d1159b7240b52f38" %}
 
 package:
   name: {{ name|lower }}
@@ -23,7 +23,7 @@ source:
     - 0003-Fix-libcrypto-test-it-must-always-fail.patch
 
 build:
-  number: 1002
+  number: 0
   skip: True  # [win]
   run_exports:
     # https://abi-laboratory.pro/?view=timeline&l=gnutls
@@ -36,7 +36,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - automake
+    - automake 1.16.1
     - libtool
     - make
     - pkg-config
@@ -57,7 +57,7 @@ test:
 
 about:
   home: http://www.gnutls.org/index.html
-  license: LGPLv2.1
+  license: LGPL-2.1-or-later
   license_family: LGPL
   license_file: LICENSE
   summary: 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols'
