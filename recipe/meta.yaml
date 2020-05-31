@@ -36,7 +36,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - automake
+    - automake 1.16.1
     - libtool
     - make
     - pkg-config
