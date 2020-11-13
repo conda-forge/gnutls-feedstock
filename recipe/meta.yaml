@@ -34,6 +34,7 @@ build:
 
 requirements:
   build:
+    - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - automake 1.16.1
