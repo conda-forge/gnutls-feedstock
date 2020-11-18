@@ -21,9 +21,11 @@ source:
     - 0002-pkgconfig.patch
     # https://gitlab.com/gnutls/gnutls/issues/660
     - 0003-Fix-libcrypto-test-it-must-always-fail.patch
+    # https://gitlab.com/gnutls/gnutls/-/issues/967
+    - 0004-Fix-status-request-revoked-after-2020-10-24.patch
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
   run_exports:
     # https://abi-laboratory.pro/?view=timeline&l=gnutls
