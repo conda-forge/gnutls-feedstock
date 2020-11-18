@@ -40,7 +40,7 @@ else
 fi
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
-make -j${CPU_COUNT} check V=1 || { 
+make -j${CPU_COUNT} check -k V=1 || { 
    echo CONDA-FORGE TEST OUTPUT; 
    cat test-output.log; 
    cat tests/test-suite.log; 
