@@ -8,7 +8,7 @@ package:
 source:
   fn: gnutls-{{ version }}.tar.xz
   url: ftp://ftp.gnutls.org/gcrypt/gnutls/v{{ version_major_minor }}/gnutls-{{ version }}.tar.xz
-  sha256: 32041df447d9f4644570cf573c9f60358e865637d69b7e59d1159b7240b52f38
+  sha256: fc59c43bc31ab20a6977ff083029277a31935b8355ce387b634fa433f8f6c49a
   patches:
     # This patch fixes things for OSX and the old compiler.
     # For some reason it would detect that the compiler has
