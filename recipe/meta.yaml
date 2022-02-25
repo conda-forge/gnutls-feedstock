@@ -36,19 +36,15 @@ requirements:
     - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - automake 1.16.1
+    - automake
     - libtool
     - make
     - pkg-config
   host:
     - gettext >=0.19.8.1     # [osx]
     - gmp
-    - nettle >=3.4.1
+    - nettle
     - datefudge              # [linux]
-  run:
-    # ideally would add run_exports to nettle and gettext and remove these
-    - nettle >=3.4.1
-    - gettext >=0.19.8.1     # [osx]
 
 test:
   commands:
