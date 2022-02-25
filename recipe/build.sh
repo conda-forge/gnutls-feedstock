@@ -1,6 +1,10 @@
 #!/bin/bash
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/libtool/build-aux/config.* ./build-aux
+# Remove  nettle static libs to test if it works:
+# https://github.com/conda-forge/nettle-feedstock/pull/10
+rm -f ${PREFIX}/lib/libnettle.a
+rm -f ${PREFIX}/lib/libhogweed.a
 set -x
 
 if [[ ${target_platform} =~ .*linux.* ]]; then
@@ -41,9 +45,9 @@ fi
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
    make -j${CPU_COUNT} check -k V=1 || {
-      echo CONDA-FORGE TEST OUTPUT; 
-      cat test-output.log; 
-      cat tests/test-suite.log; 
+      echo CONDA-FORGE TEST OUTPUT;
+      cat test-output.log;
+      cat tests/test-suite.log;
       cat tests/slow/test-suite.log;
       if [[ "${fail_test_exit_code}" == "1" ]]; then
          exit fail_test_exit_code;
