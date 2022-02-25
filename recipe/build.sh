@@ -39,7 +39,9 @@ else
    export fail_test_exit_code="1"
 fi
 
-if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
+echo CROSSCOMPILING_EMULATOR=${CROSSCOMPILING_EMULATOR}
+
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
    make -j${CPU_COUNT} check -k V=1 || {
       echo CONDA-FORGE TEST OUTPUT; 
       cat test-output.log; 
