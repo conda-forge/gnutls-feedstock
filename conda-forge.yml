@@ -7,7 +7,3 @@ provider:
   linux_aarch64: azure
   linux_ppc64le: azure
 test_on_native_only: true
-azure:
-  settings_osx:
-    pool:
-      vmImage: macOS-10.14
