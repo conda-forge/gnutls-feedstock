@@ -6,3 +6,6 @@ azure:
   settings_osx:
     pool:
       vmImage: macOS-10.14
+github:
+  branch_name: main
+  tooling_branch_name: main
