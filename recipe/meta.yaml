@@ -1,6 +1,7 @@
 {% set name = "gnutls" %}
-{% set version = "3.6.13" %}
-{% set sha256 = "32041df447d9f4644570cf573c9f60358e865637d69b7e59d1159b7240b52f38" %}
+{% set version_major_minor = "3.6" %}
+{% set version = version_major_minor + ".16" %}
+{% set sha256 = "1b79b381ac283d8b054368b335c408fedcb9b7144e0c07f531e3537d4328f3b3" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +9,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.xz
-  url: ftp://ftp.gnutls.org/gcrypt/{{ name }}/v3.6/{{ name }}-{{ version }}.tar.xz
+  url: https://www.gnupg.org/ftp/gcrypt/gnutls/v{{ version_major_minor }}/gnutls-{{ version }}.tar.xz
   sha256: {{ sha256 }}
   patches:
     # This patch fixes things for OSX and the old compiler.
@@ -25,7 +26,7 @@ source:
     - 0004-Fix-status-request-revoked-after-2020-10-24.patch
 
 build:
-  number: 1
+  number: 0
   skip: True  # [win]
   run_exports:
     # https://abi-laboratory.pro/?view=timeline&l=gnutls
@@ -46,11 +47,11 @@ requirements:
   host:
     - gettext >=0.19.8.1     # [osx]
     - gmp
-    - nettle >=3.4.1
+    - nettle >=3.7.2
     # - datefudge              # [linux]
   run:
     # ideally would add run_exports to nettle and gettext and remove these
-    - nettle >=3.4.1
+    - nettle >=3.7.2
     - gettext >=0.19.8.1     # [osx]
 
 test:
@@ -72,3 +73,5 @@ extra:
     - sachalau
     - sdvillal
     - scopatz
+    - notestaff
+
