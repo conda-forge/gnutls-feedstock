@@ -1,28 +1,17 @@
-{% set name = "gnutls" %}
-{% set version = "3.6.13" %}
-{% set sha256 = "32041df447d9f4644570cf573c9f60358e865637d69b7e59d1159b7240b52f38" %}
+{% set version = "3.7.6" %}
+{% set major_minor = ".".join(version.split(".")[:2]) %}
+
 
 package:
-  name: {{ name|lower }}
+  name: gnutls
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.xz
-  url: ftp://ftp.gnutls.org/gcrypt/{{ name }}/v3.6/{{ name }}-{{ version }}.tar.xz
-  sha256: {{ sha256 }}
+  url: https://www.gnupg.org/ftp/gcrypt/gnutls/v{{ major_minor }}/gnutls-{{ version }}.tar.xz
+  sha256: 77065719a345bfb18faa250134be4c53bef70c1bd61f6c0c23ceb8b44f0262ff
   patches:
-    # This patch fixes things for OSX and the old compiler.
-    # For some reason it would detect that the compiler has
-    # no_weaak_imports, but not actually have it
-    - 0001-macosx_no_weak_imports.patch  # [osx and c_compiler=='clang']
-    # This patch fixes the pkgconfig test. It looks for the library
-    # in the correct place (${PREFIX}/lib and ${PREFIX}/includes) and
-    # uses gcc to compile the generated temporary files.
-    - 0002-pkgconfig.patch
-    # https://gitlab.com/gnutls/gnutls/issues/660
-    - 0003-Fix-libcrypto-test-it-must-always-fail.patch
-    # https://gitlab.com/gnutls/gnutls/-/issues/967
-    - 0004-Fix-status-request-revoked-after-2020-10-24.patch
+    # https://gitlab.com/gnutls/gnutls/-/issues/660
+    - correct_ssl_test.patch
 
 build:
   number: 1
@@ -36,22 +25,17 @@ build:
 
 requirements:
   build:
-    - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - automake 1.16.1
-    - libtool
     - make
     - pkg-config
   host:
     - gettext >=0.19.8.1     # [osx]
+    - libidn2
+    - nettle
+    # Test only dependencies
+    - datefudge              # [linux]
     - gmp
-    - nettle >=3.4.1
-    # - datefudge              # [linux]
-  run:
-    # ideally would add run_exports to nettle and gettext and remove these
-    - nettle >=3.4.1
-    - gettext >=0.19.8.1     # [osx]
 
 test:
   commands:

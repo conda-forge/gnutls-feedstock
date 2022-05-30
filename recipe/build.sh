@@ -1,6 +1,5 @@
 #!/bin/bash
 # Get an updated config.sub and config.guess
-cp $BUILD_PREFIX/share/libtool/build-aux/config.* ./build-aux
 set -x
 
 if [[ ${target_platform} =~ .*linux.* ]]; then
@@ -16,20 +15,14 @@ fi
 
 export CPPFLAGS="${CPPFLAGS//-DNDEBUG/}"
 
-libtoolize --copy --force --verbose
-# libtoolize deletes things we need from build-aux, this puts them back
-automake --add-missing --copy --verbose
-
 ./configure --prefix="${PREFIX}"          \
-            --without-idn                 \
+            --with-idn                    \
             --cache-file=test-output.log  \
             --disable-full-test-suite     \
             --disable-maintainer-mode     \
             --with-included-libtasn1      \
             --with-included-unistring     \
             --without-p11-kit || { cat config.log; exit 1; }
-
-cat libtool | grep as-needed 2>&1 >/dev/null || { echo "ERROR: Not using libtool with --as-needed fixes?"; exit 1; }
 
 make -j${CPU_COUNT} ${VERBOSE_AT}
 make install
@@ -41,9 +34,9 @@ fi
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
    make -j${CPU_COUNT} check -k V=1 || {
-      echo CONDA-FORGE TEST OUTPUT; 
-      cat test-output.log; 
-      cat tests/test-suite.log; 
+      echo CONDA-FORGE TEST OUTPUT;
+      cat test-output.log;
+      cat tests/test-suite.log;
       cat tests/slow/test-suite.log;
       if [[ "${fail_test_exit_code}" == "1" ]]; then
          exit fail_test_exit_code;
