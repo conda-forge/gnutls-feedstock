@@ -14,7 +14,7 @@ source:
     - correct_ssl_test.patch
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win]
   run_exports:
     # https://abi-laboratory.pro/?view=timeline&l=gnutls
@@ -33,6 +33,7 @@ requirements:
     - gettext >=0.19.8.1     # [osx]
     - libidn2
     - nettle
+    - libtasn1
     # Test only dependencies
     - datefudge              # [linux]
     - gmp
