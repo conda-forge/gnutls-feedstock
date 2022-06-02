@@ -20,7 +20,6 @@ export CPPFLAGS="${CPPFLAGS//-DNDEBUG/}"
             --cache-file=test-output.log  \
             --disable-full-test-suite     \
             --disable-maintainer-mode     \
-            --with-included-libtasn1      \
             --with-included-unistring     \
             --without-p11-kit || { cat config.log; exit 1; }
 
