@@ -14,7 +14,7 @@ source:
     - correct_ssl_test.patch
 
 build:
-  number: 3
+  number: 4
   skip: True  # [win]
   run_exports:
     # https://abi-laboratory.pro/?view=timeline&l=gnutls
@@ -34,6 +34,7 @@ requirements:
     - libidn2
     - nettle
     - libtasn1
+    - p11-kit
     # Test only dependencies
     - datefudge              # [linux]
     - gmp
