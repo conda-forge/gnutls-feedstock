@@ -21,7 +21,7 @@ export CPPFLAGS="${CPPFLAGS//-DNDEBUG/}"
             --disable-full-test-suite     \
             --disable-maintainer-mode     \
             --with-included-unistring     \
-            --without-p11-kit || { cat config.log; exit 1; }
+            --with-p11-kit || { cat config.log; exit 1; }
 
 make -j${CPU_COUNT} ${VERBOSE_AT}
 make install
