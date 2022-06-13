@@ -1,8 +1,7 @@
-migrator_ts: 1654633916
 __migrator:
+  build_number: 1
   kind: version
   migration_number: 1
-  bump_number: 1
-
+migrator_ts: 1654875896.0626695
 p11_kit:
-  - 0.23.21
+- '0.24'
