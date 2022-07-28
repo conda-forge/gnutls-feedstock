@@ -1,4 +1,4 @@
-{% set version = "3.7.6" %}
+{% set version = "3.7.7" %}
 {% set major_minor = ".".join(version.split(".")[:2]) %}
 
 
@@ -8,14 +8,14 @@ package:
 
 source:
   url: https://www.gnupg.org/ftp/gcrypt/gnutls/v{{ major_minor }}/gnutls-{{ version }}.tar.xz
-  sha256: 77065719a345bfb18faa250134be4c53bef70c1bd61f6c0c23ceb8b44f0262ff
+  sha256: be9143d0d58eab64dba9b77114aaafac529b6c0d7e81de6bdf1c9b59027d2106
   patches:
     # https://gitlab.com/gnutls/gnutls/-/issues/660
     - correct_ssl_test.patch
 
 build:
-  number: 5
-  skip: True  # [win]
+  number: 0
+  skip: true  # [win]
   run_exports:
     # https://abi-laboratory.pro/?view=timeline&l=gnutls
     - {{ pin_subpackage('gnutls', max_pin='x.x') }}
@@ -49,7 +49,7 @@ about:
   license: LGPL-2.1-or-later
   license_family: LGPL
   license_file: LICENSE
-  summary: 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols'
+  summary: GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols
   doc_url: http://www.gnutls.org/documentation.html
   dev_url: https://gitlab.com/gnutls/gnutls/tree/master
 
