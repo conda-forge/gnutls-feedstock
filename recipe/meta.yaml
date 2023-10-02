@@ -16,7 +16,7 @@ source:
     - 1794_specify_osstatus_error_signature.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   run_exports:
     # https://abi-laboratory.pro/?view=timeline&l=gnutls
