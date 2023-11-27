@@ -38,7 +38,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
       cat tests/test-suite.log;
       cat tests/slow/test-suite.log;
       if [[ "${fail_test_exit_code}" == "1" ]]; then
-         exit fail_test_exit_code;
+         exit ${fail_test_exit_code};
       fi
    }
 fi
