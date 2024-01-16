@@ -12,8 +12,6 @@ source:
   patches:
     # https://gitlab.com/gnutls/gnutls/-/issues/660
     - correct_ssl_test.patch
-    # https://gitlab.com/gnutls/gnutls/-/merge_requests/1794
-    - 1794_specify_osstatus_error_signature.patch
 
 build:
   number: 0
