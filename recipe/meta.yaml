@@ -26,11 +26,12 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - make
     - pkg-config
   host:
-    - gettext >=0.19.8.1     # [osx]
+    - gettext                # [osx]
     - libidn2
     - nettle
     - libtasn1
