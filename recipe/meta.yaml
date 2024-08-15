@@ -1,7 +1,6 @@
 {% set version = "3.8.7" %}
 {% set major_minor = ".".join(version.split(".")[:2]) %}
 
-
 package:
   name: gnutls
   version: {{ version }}
@@ -12,8 +11,6 @@ source:
   patches:
     # https://gitlab.com/gnutls/gnutls/-/issues/660
     - correct_ssl_test.patch
-    # https://gitlab.com/gnutls/gnutls/-/merge_requests/1794
-    - 1794_specify_osstatus_error_signature.patch
 
 build:
   number: 0
@@ -28,12 +25,12 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - {{ stdlib("c") }}
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - make
     - pkg-config
   host:
-    - gettext >=0.19.8.1     # [osx]
+    - gettext                # [osx]
     - libidn2
     - nettle
     - libtasn1
