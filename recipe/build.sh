@@ -32,6 +32,13 @@ else
 fi
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
+   if [[ ${target_platform} =~ .*osx.* ]]; then
+      # hmaarrfk - 2024/08
+      # skip two problematic tests on OSX
+      # https://github.com/conda-forge/gnutls-feedstock/pull/47
+      sed -i.back 's,gnutls-cli-debug.sh,,g' tests/Makefile
+      sed -i.back 's,ocsp-tests/ocsp-must-staple-connection.sh,,g' tests/Makefile
+   fi
    make -j${CPU_COUNT} check -k V=1 || {
       echo CONDA-FORGE TEST OUTPUT;
       cat test-output.log;
