@@ -1,4 +1,4 @@
-{% set version = "3.8.7" %}
+{% set version = "3.8.8" %}
 {% set major_minor = ".".join(version.split(".")[:2]) %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://www.gnupg.org/ftp/gcrypt/gnutls/v{{ major_minor }}/gnutls-{{ version }}.tar.xz
-  sha256: fe302f2b6ad5a564bcb3678eb61616413ed5277aaf8e7bf7cdb9a95a18d9f477
+  sha256: ac4f020e583880b51380ed226e59033244bc536cad2623f2e26f5afa2939d8fb
   patches:
     # https://gitlab.com/gnutls/gnutls/-/issues/660
     - correct_ssl_test.patch

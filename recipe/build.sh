@@ -38,7 +38,9 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
       # https://github.com/conda-forge/gnutls-feedstock/pull/47
       # https://gitlab.com/gnutls/gnutls/-/issues/1539
       sed -i.back 's,gnutls-cli-debug.sh,,g' tests/Makefile
-      sed -i.back 's,ocsp-tests/ocsp-must-staple-connection.sh,,g' tests/Makefile
+      # this test should have been fixed there https://gitlab.com/gnutls/gnutls/-/issues/1546
+      # commenting
+      # sed -i.back 's,ocsp-tests/ocsp-must-staple-connection.sh,,g' tests/Makefile
    fi
    make -j${CPU_COUNT} check -k V=1 || {
       echo CONDA-FORGE TEST OUTPUT;
