@@ -32,7 +32,7 @@ else
 fi
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
-   if [[ ${target_platform} =~ .*osx.* ]]; then
+   # if [[ ${target_platform} =~ .*osx.* ]]; then
       # hmaarrfk - 2024/08
       # skip two problematic tests on OSX
       # https://github.com/conda-forge/gnutls-feedstock/pull/47
@@ -41,7 +41,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
       # this test should have been fixed there https://gitlab.com/gnutls/gnutls/-/issues/1546
       # commenting
       # sed -i.back 's,ocsp-tests/ocsp-must-staple-connection.sh,,g' tests/Makefile
-   fi
+   # fi
    make -j${CPU_COUNT} check -k V=1 || {
       echo CONDA-FORGE TEST OUTPUT;
       cat test-output.log;
