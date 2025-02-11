@@ -20,6 +20,8 @@ cxx_compiler_version:
 - '18'
 gmp:
 - '6'
+gnutls:
+- '3.8'
 libidn2:
 - '2'
 macos_machine:
