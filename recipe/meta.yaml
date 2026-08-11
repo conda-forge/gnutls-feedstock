@@ -17,7 +17,7 @@ source:
     - link_mini_dtls_fragments_with_libgnu.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   run_exports:
     # https://abi-laboratory.pro/?view=timeline&l=gnutls
@@ -25,6 +25,7 @@ build:
 
 requirements:
   build:
+    - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
