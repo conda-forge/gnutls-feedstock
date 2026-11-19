@@ -1,4 +1,4 @@
-{% set version = "3.8.13" %}
+{% set version = "3.8.14" %}
 {% set major_minor = ".".join(version.split(".")[:2]) %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://www.gnupg.org/ftp/gcrypt/gnutls/v{{ major_minor }}/gnutls-{{ version }}.tar.xz
-  sha256: ffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e
+  sha256: 7e2d258071f5db9620aa7ff34259331d004f7beafa3eb18560cfaf60acfbf02a
   patches:
     # https://gitlab.com/gnutls/gnutls/-/issues/660
     - correct_ssl_test.patch
@@ -17,7 +17,7 @@ source:
     - link_mini_dtls_fragments_with_libgnu.patch
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
   run_exports:
     # https://abi-laboratory.pro/?view=timeline&l=gnutls
